@@ -6,6 +6,7 @@ var projName = $("#project-name");
 var projType = $("#project-type");
 var projHourly = $("#hourly-wage");
 var projDate = $("#datepicker");
+var projTable = $("#project-table");
 
 var formSubmit = function (event) {
     event.preventDefault();
@@ -21,19 +22,21 @@ var formSubmit = function (event) {
 }
 
 function printProject(inputObj) {
+
     var tr = $("<tr>");
         var name = $("<td>");
         name.text(inputObj.name);
         var type = $("<td>");
-        type.text(inputObj.name);
+        type.text(inputObj.type);
         var hourly = $("<td>");
-        hourly.text(inputObj.name);
+        hourly.text(inputObj.hourly);
         var date = $("<td>");
-        date.text(inputObj.name);
+        date.text(inputObj.date);
     tr.append(name);
     tr.append(type);
     tr.append(hourly);
     tr.append(date);
+    projTable.append(tr);
     
 }
 
@@ -48,7 +51,6 @@ $( function() {
 makePage();
 
 projectFormEl.on("submit", formSubmit);
-console.log(projName);
 
 // var handleFormSubmit = function (event) {
 //     event.preventDefault();
