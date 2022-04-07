@@ -36,6 +36,13 @@ function printProject(inputObj) {
     tr.append(type);
     tr.append(hourly);
     tr.append(date);
+    var dueDate = moment().year(inputObj.date.substring(6, 10)).month(inputObj.date.substring(0, 2) - 1).date(inputObj.date.substring(3, 5));
+    var dayUntilDue = $("<td>");
+    dayUntilDue.text(dueDate.date() - today.date());
+    tr.append(dayUntilDue);
+    var estTotalEarnings = $("<td>");
+    estTotalEarnings.text(8 * inputObj.hourly * (dueDate.date() - today.date()));
+    tr.append(estTotalEarnings);
     projTable.append(tr);
     
 }
