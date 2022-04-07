@@ -43,8 +43,19 @@ function printProject(inputObj) {
     var estTotalEarnings = $("<td>");
     estTotalEarnings.text(8 * inputObj.hourly * (dueDate.date() - today.date()));
     tr.append(estTotalEarnings);
+
+    var btn = $('<btn>');
+    btn.addClass("btn btn-danger");
+    btn.text("Remove");
+    tr.append(btn);
+
     projTable.append(tr);
     
+}
+
+function remove(event) {
+    var btn = event.currentTarget;
+    $(btn).parent().first().remove();
 }
 
 function makePage() {
@@ -58,6 +69,7 @@ $( function() {
 makePage();
 
 projectFormEl.on("submit", formSubmit);
+projTable.on("click", ".btn", remove);
 
 // var handleFormSubmit = function (event) {
 //     event.preventDefault();
